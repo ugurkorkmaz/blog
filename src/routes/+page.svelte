@@ -14,7 +14,10 @@
     export let pageData: PageData;
     console.log(pageData)
 </script>
-
+<svelte:head>
+  <title>Uğur Korkmaz</title>
+  <meta name="description" content="Uğur Korkmaz's personal website" />
+</svelte:head>
 <div class="w-full flex justify-center">
     <div class="w-full md:w-8/12 flex justify-between p-4">
         <h1 class="inline-flex font-semibold justify-center items-center text-xl">
