@@ -1,14 +1,13 @@
+import { API_URL, TOKEN } from '$env/static/private';
+
 export let gql = String.raw;
 
-const query = "127.0.0.1:8080/graphql"
-const ws = "127.0.0.1:8080/ws"
-
-export const gateway = async (query: string, variables?: any, token?: string) => {
-    const response = await fetch(query, {
+export const gateway = async (query: string, variables?: any) => {
+    const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': token as string,
+            'Authorization': 'bearer ' + TOKEN
         },
         body: JSON.stringify({
             query,
