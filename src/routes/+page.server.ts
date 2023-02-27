@@ -24,8 +24,6 @@ export const load = (async () => {
     }
   }
 `;
-  const response = await gateway(query);
-  return response
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
