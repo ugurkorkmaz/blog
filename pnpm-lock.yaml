@@ -1,13 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@geoffcodesthings/tailwind-md-base': ^1.1.0
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/adapter-vercel': ^2.1.1
   '@sveltejs/kit': ^1.5.0
+  '@types/marked': ^4.0.8
+  '@types/slug': ^5.0.3
   autoprefixer: ^10.4.7
   daisyui: ^2.51.2
+  marked: ^4.2.12
   postcss: ^8.4.14
   postcss-load-config: ^4.0.1
+  slug: ^8.2.2
   svelte: ^3.54.0
   svelte-check: ^3.0.1
   svelte-preprocess: ^4.10.7
@@ -17,12 +22,17 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
+  '@geoffcodesthings/tailwind-md-base': 1.1.0_tailwindcss@3.2.7
   '@sveltejs/adapter-vercel': 2.1.1_@sveltejs+kit@1.8.5
+  '@types/marked': 4.0.8
   daisyui: 2.51.2_gbtt6ss3tbiz4yjtvdr6fbrj44
+  marked: 4.2.12
+  slug: 8.2.2
 
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.8.5
   '@sveltejs/kit': 1.8.5_svelte@3.55.1+vite@4.1.4
+  '@types/slug': 5.0.3
   autoprefixer: 10.4.13_postcss@8.4.21
   postcss: 8.4.21
   postcss-load-config: 4.0.1_postcss@8.4.21
@@ -212,6 +222,15 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@geoffcodesthings/tailwind-md-base/1.1.0_tailwindcss@3.2.7:
+    resolution: {integrity: sha512-wk4Si7Vlcn6au2m068tbjYfGdirXdLZ47Cmn7f+5GhjG88M7qblv3n5InLaNK9GSmg2Vo0uV9Flcxp+OUVdySg==}
+    peerDependencies:
+      tailwindcss: ^1.0
+    dependencies:
+      lodash: 4.17.21
+      tailwindcss: 3.2.7_postcss@8.4.21
+    dev: false
+
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
     engines: {node: '>=6.0.0'}
@@ -344,6 +363,10 @@ packages:
   /@types/cookie/0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
 
+  /@types/marked/4.0.8:
+    resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
+    dev: false
+
   /@types/node/18.14.2:
     resolution: {integrity: sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==}
     dev: true
@@ -356,6 +379,10 @@ packages:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
       '@types/node': 18.14.2
+    dev: true
+
+  /@types/slug/5.0.3:
+    resolution: {integrity: sha512-yPX0bb1SvrpaGlHuSiz6EicgRI4VBE+LO7IANlZagQwtaoKjLLcZc8y6s13vKp41mYvMCSzjtObxvU7/0JRPaA==}
     dev: true
 
   /@vercel/nft/0.22.6:
@@ -887,6 +914,10 @@ packages:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
 
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
+
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
@@ -924,6 +955,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       semver: 6.3.0
+    dev: false
+
+  /marked/4.2.12:
+    resolution: {integrity: sha512-yr8hSKa3Fv4D3jdZmtMMPghgVt6TWbk86WQaWhDloQjRSQhMMYCAro7jP7VDJrjjdV8pxVxMssXS8B8Y5DZ5aw==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: false
 
   /merge2/1.4.1:
@@ -1299,6 +1336,11 @@ packages:
       '@polka/url': 1.0.0-next.21
       mrmime: 1.0.1
       totalist: 3.0.0
+
+  /slug/8.2.2:
+    resolution: {integrity: sha512-5ByW6qXqPeG0Tmlkh24JhdXhvQsbaJSjVr3GgGxUV0BSskZKKBZZfFWxezap8+fh1vxBN9GVbqI1V6nqAFxlBg==}
+    hasBin: true
+    dev: false
 
   /sorcery/0.10.0:
     resolution: {integrity: sha512-R5ocFmKZQFfSTstfOtHjJuAwbpGyf9qjQa1egyhvXSbM7emjrtLXtGdZsDJDABC85YBfVvrOiGWKSYXPKdvP1g==}

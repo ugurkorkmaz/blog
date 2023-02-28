@@ -7,7 +7,7 @@ export const gateway = async (query: string, variables?: any) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + TOKEN
+            'Authorization': 'bearer ' + TOKEN as string
         },
         body: JSON.stringify({
             query,

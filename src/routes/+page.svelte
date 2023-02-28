@@ -1,22 +1,23 @@
 <script lang="ts">
     import { enhance, type SubmitFunction } from "$app/forms";
     import Blog from "$lib/component/Blog.svelte";
-    import Language from "$lib/component/Language.svelte";
     import Theme from "$lib/component/Theme.svelte";
-    import type { PageData } from "./$types";
+    import slug from "slug";
+    import type { PageData, PageServerData } from "./$types";
 
-    const updateTheme: SubmitFunction = ({data}) =>{
+    const updateTheme: SubmitFunction = ({ data }) => {
         const theme = data.get("theme") as string;
-        if (data.get("theme")){
-            document.documentElement.setAttribute('data-theme',theme)
+        if (data.get("theme")) {
+            document.documentElement.setAttribute('data-theme', theme)
         }
     }
-    export let pageData: PageData;
-    console.log(pageData)
+    export let data: PageServerData;
+    console.log(data)
 </script>
 <svelte:head>
-  <title>Uğur Korkmaz</title>
-  <meta name="description" content="Uğur Korkmaz's personal website" />
+    <title>Uğur Korkmaz</title>
+    <meta name="description" content="Uğur Korkmaz's personal website" />
+    <meta name="keywords" content="golang,php,javascript,typescript,graphql,symfony,gqlgen,entgo,docker,tailwindcss,html,css,js" />
 </svelte:head>
 <div class="w-full flex justify-center">
     <div class="w-full md:w-8/12 flex justify-between p-4">
@@ -27,31 +28,19 @@
             <form action="?/theme" method="post" use:enhance={updateTheme}>
                 <Theme />
             </form>
-            <form action="?/language" method="post" use:enhance>
-                <Language />
-            </form>
         </div>
     </div>
 </div>
-<div class="w-full flex justify-center mt-1 p-4">
-    <div class="w-full md:w-8/12 flex flex-col shadow-xl md:p-4">
-        <p class="">
-            As a seasoned Full Stack Software Developer, I possess extensive expertise
-            in various programming languages and tools including PHP, Symfony, Golang,
-            Gqlgen, GraphQL, Docker, Tailwindcss, Svelte, and Sveltekit. My particular
-            focus is on leveraging GraphQL to create high-performance and flexible
-            APIs, and utilizing Docker to accelerate the testing, deployment, and
-            management of applications. I also take pride in building fast and
-            interactive web applications using Svelte/Sveltekit. Throughout my
-            professional journey, I have consistently placed my clients' needs at the
-            forefront of my work, adopting a solution-focused approach to ensure that
-            I deliver customized and reliable solutions to meet their unique
-            requirements. I am also meticulous about keeping my code clean and
-            readable, which facilitates team collaboration and streamlines project
-            completion. If you would like to explore my software development skills
-            further, please feel free to contact me via my LinkedIn profile.
+<div class="w-full flex justify-center mt-1 p-1 md:p-4">
+    <div class="w-full md:w-8/12 flex flex-col md:p-4">
+        <p class="text-sm font-bold">
+            Experienced Full Stack Software Developer with expertise in PHP, Symfony, Golang, Gqlgen, GraphQL, Docker,
+            Tailwindcss, Svelte, and Sveltekit. Focus on using GraphQL for high-performance APIs and Docker for
+            efficient application testing/deployment. Skilled in building fast and interactive web applications with
+            Svelte/Sveltekit. Solutions-oriented approach prioritizes client needs. Emphasizes clean, readable code for
+            streamlined team collaboration. Contact through LinkedIn.
         </p>
-        <div class="mt-1 w-full flex justify-start">
+        <div class="mt-1 w-full flex justify-start mt-2">
             <a class="" href="mailto:job@ugurkorkmaz.net">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-label="Email" role="img" class="w-6 h-6"
                     viewBox="0 0 512 512">
@@ -89,7 +78,16 @@
         </div>
         <span class="w-full inline-flex font-semibold text-lg mt-4 mb-4">Recent Blog Posts</span>
         <div class="w-full grid md:grid-cols-2 grid-cols-1 gap-4">
-
+            {#each data.posts as item }
+                {#if item.node.category.slug != "unpublished"}
+                <Blog 
+                    date={item.node.createdAt}  
+                    title={item.node.title} 
+                    post={item.node.bodyText}
+                    url="/{slug(item.node.title)}_{item.node.number}"
+                />
+                {/if}
+            {/each}
         </div>
     </div>
 </div>

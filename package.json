@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.5.0",
+    "@types/slug": "^5.0.3",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
@@ -25,7 +26,11 @@
   },
   "type": "module",
   "dependencies": {
+    "@geoffcodesthings/tailwind-md-base": "^1.1.0",
     "@sveltejs/adapter-vercel": "^2.1.1",
-    "daisyui": "^2.51.2"
+    "@types/marked": "^4.0.8",
+    "daisyui": "^2.51.2",
+    "marked": "^4.2.12",
+    "slug": "^8.2.2"
   }
 }

@@ -1,15 +1,28 @@
-<div class="w-full h-auto flex flex-col border-b-2 border-l-2  p-2">
-    <h1>Title</h1>
+<script lang="ts">
+  const wpm = 225;
 
-    <div class="w-full inline-flex justify-start">
-        <span>01 01 2000</span>
-        <span>2 min read</span>
-    </div>
+  export let title: string;
+  export let date: string;
+  export let post: string;
+  export let url: string;
+  let articleReadTime = Math.ceil(post.trim().split(/\s+/).length / wpm);
 
-    <h2>
-        I spent a bit of time the other day looking into the Fathom Analytics API, this was something I took
-        a look at around a year ago now, but I didn’t really get around to using it.
+  function truncate(words: string, maxlength: number) {
+    return `${words.slice(0, maxlength)} …`;
+  }
+</script>
 
-        If you’re looking to implement Fathom analytics on your site, I updated ...
-    </h2>
+<div class="w-full h-auto flex flex-col p-3 shadow-lg rounded hover:bg-primary-focus hover:text-primary-content">
+<a href={url}>
+  <h1 class="text-lg font-semibold">{title}</h1>
+
+  <div class="w-full inline-flex justify-start gap-3 mt-2">
+    <span class="font-extrabold text-sm">{new Date(date).toLocaleDateString()}</span>
+    <span class="font-extrabold text-sm">{articleReadTime} min read</span>
+  </div>
+
+  <h2 class="text-sm font-bold mt-2">
+    {truncate(post, 255)}
+  </h2>
+</a>
 </div>
