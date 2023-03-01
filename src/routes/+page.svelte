@@ -3,16 +3,18 @@
     import Blog from "$lib/component/Blog.svelte";
     import Theme from "$lib/component/Theme.svelte";
     import slug from "slug";
-    import type { PageData, PageServerData } from "./$types";
+    import type { PageServerData } from "./$types";
 
-    const updateTheme: SubmitFunction = ({ data }) => {
+    
+
+    const updateTheme: SubmitFunction = ({ data,form }) => {
         const theme = data.get("theme") as string;
         if (data.get("theme")) {
             document.documentElement.setAttribute('data-theme', theme)
         }
+        
     }
     export let data: PageServerData;
-    console.log(data)
 </script>
 <svelte:head>
     <title>Uğur Korkmaz</title>
@@ -25,8 +27,8 @@
             Uğur Korkmaz
         </h1>
         <div class="flex justify-between">
-            <form action="?/theme" method="post" use:enhance={updateTheme}>
-                <Theme />
+            <form action="?/theme" method="post" use:enhance|preventDefault={updateTheme}>
+                <Theme active={data.theme} />
             </form>
         </div>
     </div>

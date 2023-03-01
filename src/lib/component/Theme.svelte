@@ -1,42 +1,41 @@
 <script lang="ts">
   import Icon from "./Icon.svelte";
+  export let active: string
+  const themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter"]
 </script>
 
 
 <div class="dropdown dropdown-end">
-    <!-- svelte-ignore a11y-label-has-associated-control -->
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <label tabindex="0" class="btn m-1"><Icon name="layers" type="filled" /></label>
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <div class="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl mt-16">
-      <div class="grid grid-cols-1 gap-3 p-3" tabindex="0">
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="cupcake">cupcake</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="bumblebee">bumblebee</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="emerald">emerald</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="corporate">corporate</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="synthwave">synthwave</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="retro">retro</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="cyberpunk">cyberpunk</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="valentine">valentine</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="halloween">halloween</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="garden">garden</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="forest">forest</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="aqua">aqua</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="lofi">lofi</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="pastel">pastel</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="fantasy">fantasy</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="wireframe">wireframe</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="black">black</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="luxury">luxury</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="dracula">dracula</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="cmyk">cmyk</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="autumn">autumn</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="business">business</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="acid">acid</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="lemonade">lemonade</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="night">night</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="coffee">coffee</button>
-        <button class="outline-base-content overflow-hidden rounded-lg text-left" type="submit" name="theme" value="winter">winter</button>
-      </div>
+  <!-- svelte-ignore a11y-label-has-associated-control -->
+  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+  <label tabindex="0" class="btn m-1">
+    <Icon name="layers" type="filled" />
+  </label>
+  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+  <div
+    class="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl mt-16"  tabindex="0">
+    <div class="grid grid-cols-1 gap-3 p-3" tabindex="0" data-focustheme="true">
+      {#each themes as item }
+      <button type="submit" value={item} name="theme" class="outline-base-content overflow-hidden rounded-lg text-left"
+        data-set-theme="{item}">
+        <div data-theme="{item}" class="bg-base-100 text-base-content w-full cursor-pointer font-sans">
+          <div class="grid grid-cols-5 grid-rows-3">
+            <div class="col-span-5 row-span-3 row-start-1 flex gap-2 py-3 px-4 items-center">
+              {#if active == item}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"></path></svg>
+              {/if}
+              <div class="flex-grow text-sm font-bold">{item}</div>
+              <div class="flex flex-shrink-0 flex-wrap gap-1 h-full">
+                <div class="bg-primary w-2 rounded"></div>
+                <div class="bg-secondary w-2 rounded"></div>
+                <div class="bg-accent w-2 rounded"></div>
+                <div class="bg-neutral w-2 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+      {/each}
     </div>
+  </div>
 </div>
