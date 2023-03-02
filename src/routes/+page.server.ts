@@ -1,7 +1,7 @@
 import { gateway, gql } from "$lib/client";
 import type { Actions, PageServerLoad } from "./$types";
 
-export const load = async ({cookies}) => {
+export const load = async ({}) => {
   const query = gql`
   {
   repository(name: "blog", owner: "ugurkorkmaz") {
@@ -37,11 +37,9 @@ export const load = async ({cookies}) => {
   if (data) {
     return {
       posts: data?.repository?.discussions?.edges,
-      theme: cookies.get("theme")
     };
   }
 };
-
 export const actions: Actions = {
   theme: async ({ cookies, request }) => {
     const input = await request.formData();
