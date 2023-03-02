@@ -13,6 +13,11 @@ export const load = async ({cookies}) => {
           bodyText
           createdAt
           number
+          labels(first: 20) {
+            nodes {
+              name
+            }
+          }
           category {
             slug
             name

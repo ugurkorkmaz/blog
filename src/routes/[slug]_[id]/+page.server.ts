@@ -14,6 +14,11 @@ const query = gql`
           emojiHTML
           slug
         }
+        labels(first: 10) {
+            nodes {
+              name
+            }
+          }
       }
     }
   }
