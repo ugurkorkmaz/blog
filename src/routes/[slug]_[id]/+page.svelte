@@ -27,7 +27,7 @@
     referrerpolicy="no-referrer"
   />
 </svelte:head>
-<div class="markdown-body  p-4 md:p-8">
+<div class="markdown-body  p-4 md:p-8 rounded-lg">
   {@html data.bodyHTML}
 </div>
 
