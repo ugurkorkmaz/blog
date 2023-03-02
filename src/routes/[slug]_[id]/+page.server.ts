@@ -13,6 +13,7 @@ const query = gql`
         category {
           emojiHTML
           slug
+          id
         }
         labels(first: 10) {
             nodes {

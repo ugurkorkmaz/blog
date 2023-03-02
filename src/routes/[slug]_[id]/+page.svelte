@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Giscus from "@giscus/svelte";
   import type { PageServerData } from "./$types";
   export let data: PageServerData;
   let keywords = "";
@@ -6,9 +7,9 @@
   if (data?.labels?.nodes == null) {
     keywords = data?.title;
   }
-  console.log(data.labels?.nodes.length)
+  console.log(data.labels?.nodes.length);
   data?.labels?.nodes.forEach((e: any, index: number) => {
-    if (index == (data.labels?.nodes.length - 1)) {
+    if (index == data.labels?.nodes.length - 1) {
       keywords += e.name.toLowerCase();
     } else {
       keywords += e.name.toLowerCase() + ",";
@@ -30,18 +31,18 @@
 <div class="markdown-body  p-4 md:p-8 rounded-lg">
   {@html data.bodyHTML}
   <hr />
-  Comments
-  {@html `
-  <script src="https://utteranc.es/client.js"
-        repo="ugurkorkmaz/blog"
-        issue-term="pathname"
-        label="comment"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async
-        data-sveltekit-reload
-        >
-</script>
-  `}
+  <Giscus
+    id="comments"
+    category="TR"
+    repo="ugurkorkmaz/blog"
+    repoID="R_kgDOJDIiKA"
+    categoryId="DIC_kwDOF1L2fDIC_kwDOJDIiKM4CUmpxM4B-hVS"
+    mapping="specific"
+    term={data?.title}
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="preferred_color_scheme"
+    lang="tr"
+  />
 </div>
-

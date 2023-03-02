@@ -27,6 +27,7 @@
   "type": "module",
   "dependencies": {
     "@geoffcodesthings/tailwind-md-base": "^1.1.0",
+    "@giscus/svelte": "^2.2.8",
     "@sveltejs/adapter-vercel": "^2.1.1",
     "@types/marked": "^4.0.8",
     "daisyui": "^2.51.2",
