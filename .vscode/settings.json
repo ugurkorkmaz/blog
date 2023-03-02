@@ -1,24 +1,11 @@
 {
-    "hide-files.files": [
-        "postcss.config.cjs",
-        "LICENSE",
-        "pnpm-lock.yaml",
-        "node_modules",
-        ".svelte-kit",
-        ".vscode"
-    ],
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "postcss.config.cjs": true,
-        "LICENSE": true,
-        "pnpm-lock.yaml": true,
-        "node_modules": true,
-        ".svelte-kit": true,
-        ".vscode": true
-    }
+        "**/Thumbs.db": true
+    },
+    "hide-files.files": []
 }

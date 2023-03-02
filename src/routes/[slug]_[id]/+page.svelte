@@ -29,7 +29,19 @@
 </svelte:head>
 <div class="markdown-body  p-4 md:p-8 rounded-lg">
   {@html data.bodyHTML}
+  <hr />
+  Comments
+  {@html `
+  <script src="https://utteranc.es/client.js"
+        repo="ugurkorkmaz/blog"
+        issue-term="pathname"
+        label="comment"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async
+        data-sveltekit-reload
+        >
+</script>
+  `}
 </div>
 
-<style>
-</style>
