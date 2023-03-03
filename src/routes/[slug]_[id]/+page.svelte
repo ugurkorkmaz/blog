@@ -15,11 +15,18 @@
       keywords += e.name.toLowerCase() + ",";
     }
   });
+  const metin: string = data?.body;
+  const regex: RegExp = /!\[og_image\]\((.*?)\)/g;
+  let og_image = regex.exec(metin) as RegExpExecArray;
 </script>
 
 <svelte:head>
   <title>Uğur Korkmaz - {data.title}</title>
-  <meta name="keywords" content={keywords} />
+  <meta name="keywords" content="{keywords}" />
+  <meta property="og:title" content="{data.title}" />
+  <meta property="og:description" content="{data?.bodyText?.slice(0, 255)}" />
+
+  <meta property="og:image" content={og_image[1]} />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"

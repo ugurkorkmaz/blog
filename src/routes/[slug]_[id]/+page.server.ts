@@ -8,6 +8,7 @@ const query = gql`
         title
         bodyHTML
         bodyText
+        body
         publishedAt
         createdAt
         category {
