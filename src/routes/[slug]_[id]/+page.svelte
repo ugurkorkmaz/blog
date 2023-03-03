@@ -17,7 +17,7 @@
   });
   const metin: string = data?.body;
   const regex: RegExp = /!\[og_image\]\((.*?)\)/g;
-  let og_image = regex.exec(metin) as RegExpExecArray;
+  let og_image = regex.exec(metin)
 </script>
 
 <svelte:head>
@@ -26,7 +26,9 @@
   <meta property="og:title" content="{data.title}" />
   <meta property="og:description" content="{data?.bodyText?.slice(0, 255)}" />
 
+  {#if og_image}
   <meta property="og:image" content={og_image[1]} />
+  {/if}
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"
