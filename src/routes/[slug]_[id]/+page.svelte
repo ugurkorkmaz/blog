@@ -24,7 +24,7 @@
   <title>Uğur Korkmaz - {data.title}</title>
   <meta name="keywords" content="{keywords}" />
   <meta property="og:title" content="{data.title}" />
-  <meta property="og:description" content="{data?.bodyText?.slice(0, 255)}" />
+  <meta property="og:description" content="{data?.title} - {keywords}" />
 
   {#if og_image}
   <meta property="og:image" content={og_image[1]} />
